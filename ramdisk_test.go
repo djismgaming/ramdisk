@@ -13,6 +13,7 @@ import (
 	"os/exec"
 	"path/filepath"
 	"testing"
+	"time"
 
 	"github.com/mroth/ramdisk"
 )
@@ -83,6 +84,7 @@ func TestDestroy(t *testing.T) {
 	if err != nil {
 		t.Skip("precondition creating ramdisk failed!")
 	}
+	time.Sleep(500 * time.Millisecond)
 	err = ramdisk.Destroy(rd.DevicePath)
 	ifErrLogFatalDetailed(err, t)
 }
